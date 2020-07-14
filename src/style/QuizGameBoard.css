@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap");
+
+.gameboard {
+  margin: 1rem;
+}
+
+.question {
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: "Roboto Slab", serif;
+  margin: 1.4rem 0rem;
+}
+
+.answersContainer {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.answers {
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Lora", serif;
+  margin: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18rem;
+  height: 3rem;
+  border: 2px dashed;
+  border-radius: 0.3rem;
+}
+
+.submitBtn {
+  height: 3rem;
+  width: 18rem;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Do Hyeon", sans-serif;
+  background: #00ff00;
+  border: none;
+  border-radius: 0.6rem;
+}
