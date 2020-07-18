@@ -46,6 +46,10 @@ export default (props) => {
         <button className={"submitBtn"} onClick={props.refresh}>
           👍 Play Again
         </button>
+
+        <button className={"submitBtn"} onClick={props.goBackToMainMenu}>
+          🚁 Main Menu
+        </button>
       </div>
     </div>
   );

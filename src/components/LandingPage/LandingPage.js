@@ -2,6 +2,7 @@ import React from "react";
 
 import QuizGame from "../QuizGame";
 import Popup from "./Popup";
+import Card from "./Card";
 
 import "../../style/LandingPage/LandingPage.css";
 
@@ -21,6 +22,7 @@ export default class LandingPage extends React.Component {
     });
   };
 
+  // Show quiz game once the category & difficulty is selected
   showQuizGame = (difficulty) => {
     this.setState({
       difficulty: difficulty,
@@ -32,8 +34,11 @@ export default class LandingPage extends React.Component {
     }
   };
 
-  categoryChoosedJsx = () => {
-    return <QuizGame />;
+  goBackToMainMenu = () => {
+    this.setState({
+      showPopup: false,
+      displayQuizGame: false,
+    });
   };
 
   categoryGridsJsx = () => {
@@ -47,48 +52,71 @@ export default class LandingPage extends React.Component {
           />
         ) : null}
         <div className={"category-grid"}>
-          <div className={"card"} onClick={() => this.togglePopup("gk")}>
-            General Knowledge
-          </div>
-          <div className={"card"} onClick={() => this.togglePopup("sci&nat")}>
-            Science & Nature
-          </div>
-          <div className={"card"} onClick={() => this.togglePopup("comp")}>
-            Computers
-          </div>
-          <div className={"card"} onClick={() => this.togglePopup("math")}>
-            Mathematics
-          </div>
-          <div className={"card"} onClick={() => this.togglePopup("politics")}>
-            Politics
-          </div>
-          <div className={"card"} onClick={() => this.togglePopup("sports")}>
-            Sports
-          </div>
-          <div className={"card"} onClick={() => this.togglePopup("geo")}>
-            Geography
-          </div>
-          <div className={"card"} onClick={() => this.togglePopup("hist")}>
-            History
-          </div>
-          <div className={"card"} onClick={() => this.togglePopup("animals")}>
-            Animals
-          </div>
-          <div className={"card"} onClick={() => this.togglePopup("vehicles")}>
-            Vehicles
-          </div>
-          <div className={"card"} onClick={() => this.togglePopup("comics")}>
-            Comics
-          </div>
-          <div className={"card"} onClick={() => this.togglePopup("ani&manga")}>
-            Japanese Anime & Manga
-          </div>
-          <div
-            className={"card"}
-            onClick={() => this.togglePopup("cartoon&anim")}
-          >
-            Cartoon & Animations
-          </div>
+          <Card
+            togglePopup={this.togglePopup}
+            category={"gk"}
+            text={"General Knowledge"}
+          />
+          <Card
+            togglePopup={this.togglePopup}
+            category={"sci&nat"}
+            text={"Science & Nature"}
+          />
+          <Card
+            togglePopup={this.togglePopup}
+            category={"comp"}
+            text={"Computers"}
+          />
+          <Card
+            togglePopup={this.togglePopup}
+            category={"math"}
+            text={"Mathematics"}
+          />
+          <Card
+            togglePopup={this.togglePopup}
+            category={"politics"}
+            text={"Politics"}
+          />
+          <Card
+            togglePopup={this.togglePopup}
+            category={"sports"}
+            text={"Sports"}
+          />
+          <Card
+            togglePopup={this.togglePopup}
+            category={"geo"}
+            text={"Geography"}
+          />
+          <Card
+            togglePopup={this.togglePopup}
+            category={"hist"}
+            text={"History"}
+          />
+          <Card
+            togglePopup={this.togglePopup}
+            category={"animals"}
+            text={"Animals"}
+          />
+          <Card
+            togglePopup={this.togglePopup}
+            category={"vehicles"}
+            text={"Vehicles"}
+          />
+          <Card
+            togglePopup={this.togglePopup}
+            category={"comics"}
+            text={"Comics"}
+          />
+          <Card
+            togglePopup={this.togglePopup}
+            category={"ani&manga"}
+            text={"Japanese Anime & Manga"}
+          />
+          <Card
+            togglePopup={this.togglePopup}
+            category={"cartoon&anim"}
+            text={"Cartoon & Animations"}
+          />
         </div>
       </div>
     );
@@ -103,6 +131,8 @@ export default class LandingPage extends React.Component {
           <QuizGame
             category={this.state.category}
             difficulty={this.state.difficulty}
+            displayQuizGame={this.state.displayQuizGame}
+            goBackToMainMenu={this.goBackToMainMenu}
           />
         ) : (
           this.categoryGridsJsx()

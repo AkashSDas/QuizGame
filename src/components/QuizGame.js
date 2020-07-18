@@ -167,12 +167,14 @@ export default class QuizGame extends React.Component {
             refresh={this.refresh}
             checkAnswer={this.checkAnswer}
             borderColorOnClick={this.state.borderColorOnClick}
+            goBackToMainMenu={this.props.goBackToMainMenu}
           />
         ) : (
           <ScoreBoard
             refresh={this.refresh}
             questionCorrectlySolved={this.state.questionCorrectlySolved}
             questionsSolved={this.state.questionsSolved}
+            goBackToMainMenu={this.props.goBackToMainMenu}
           />
         )}
       </div>
