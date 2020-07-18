@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap");
+
+.headline {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 4rem;
+  font-family: "Kanit", sans-serif;
+  text-align: center;
+}
