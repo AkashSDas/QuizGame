@@ -93,7 +93,7 @@ export default class QuizGame extends React.Component {
     difficulty: this.props.difficulty,
   };
 
-  async componentDidMount() {
+  async getQuizGame() {
     const results = await getQAndA(this.state.category, this.state.difficulty);
 
     this.setState({
@@ -102,8 +102,10 @@ export default class QuizGame extends React.Component {
       quizAnswers: results.answersArr,
       correctAnswer: results.correctAnswer,
     });
+  }
 
-    console.log(this.state.quizQuestion);
+  async componentDidMount() {
+    this.getQuizGame();
   }
 
   refresh = () => {
@@ -122,7 +124,7 @@ export default class QuizGame extends React.Component {
         canClickOnAnswer: true,
       });
     }
-    this.componentDidMount();
+    this.getQuizGame();
   };
 
   checkAnswer = (answer) => {
