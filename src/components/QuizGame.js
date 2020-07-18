@@ -7,6 +7,77 @@ import shuffle from "../utils/shuffle";
 import QuizGameBoard from "./QuizGameBoard";
 import ScoreBoard from "./ScoreBoard";
 
+function getCategoryNum(category) {
+  if (category === "gk") {
+    return 9;
+  }
+  if (category === "sci&nat") {
+    return 17;
+  }
+  if (category === "comp") {
+    return 18;
+  }
+  if (category === "math") {
+    return 19;
+  }
+  if (category === "politics") {
+    return 24;
+  }
+  if (category === "sports") {
+    return 21;
+  }
+  if (category === "geo") {
+    return 22;
+  }
+  if (category === "hist") {
+    return 23;
+  }
+  if (category === "animals") {
+    return 27;
+  }
+  if (category === "vehicles") {
+    return 28;
+  }
+  if (category === "comics") {
+    return 29;
+  }
+  if (category === "cartoon&anim") {
+    return 31;
+  }
+  if (category === "ani&manga") {
+    return 31;
+  }
+}
+
+async function getQAndA(category, difficulty) {
+  const categoryNum = getCategoryNum(category);
+  const url = `https://opentdb.com/api.php?amount=1&category=${categoryNum}&difficulty=${difficulty}&type=multiple`;
+  const response = await fetch(url);
+  const data = await response.json();
+
+  let quizQuestion = data.results[0].question.replace(/&quot;/g, '\\"');
+
+  let answersArr = data["results"][0]["incorrect_answers"];
+  answersArr.push(data["results"][0]["correct_answer"]);
+  answersArr = shuffle(answersArr); // Shuffling the answerArr
+
+  // Generating id: {id, answer}
+  for (let i = 0; i < answersArr.length; i++) {
+    answersArr[i] = {
+      id: shortid.generate(),
+      answer: answersArr[i],
+    };
+  }
+
+  let correctAnswer = data["results"][0]["correct_answer"];
+
+  return {
+    quizQuestion: quizQuestion,
+    answersArr: answersArr,
+    correctAnswer: correctAnswer,
+  };
+}
+
 export default class QuizGame extends React.Component {
   state = {
     isLoading: true,
@@ -17,37 +88,22 @@ export default class QuizGame extends React.Component {
     questionCorrectlySolved: 0,
     borderColorOnClick: "#9932cc",
     canClickOnAnswer: true,
+
+    category: this.props.category,
+    difficulty: this.props.difficulty,
   };
 
   async componentDidMount() {
-    const url =
-      "https://opentdb.com/api.php?amount=1&category=9&difficulty=easy&type=multiple";
-    const response = await fetch(url);
-    const data = await response.json();
-
-    let answersArr = data["results"][0]["incorrect_answers"];
-    answersArr.push(data["results"][0]["correct_answer"]);
-
-    this.setState({
-      correctAnswer: data["results"][0]["correct_answer"],
-    });
-
-    // Shuffling the answerArr
-    answersArr = shuffle(answersArr);
-
-    // Generating id: {id, answer}
-    for (let i = 0; i < answersArr.length; i++) {
-      answersArr[i] = {
-        id: shortid.generate(),
-        answer: answersArr[i],
-      };
-    }
+    const results = await getQAndA(this.state.category, this.state.difficulty);
 
     this.setState({
       isLoading: false,
-      quizQuestion: data.results[0].question.replace(/&quot;/g, '\\"'),
-      quizAnswers: answersArr,
+      quizQuestion: results.quizQuestion,
+      quizAnswers: results.answersArr,
+      correctAnswer: results.correctAnswer,
     });
+
+    console.log(this.state.quizQuestion);
   }
 
   refresh = () => {
