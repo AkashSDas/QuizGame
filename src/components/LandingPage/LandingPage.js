@@ -99,7 +99,14 @@ export default class LandingPage extends React.Component {
       <div>
         <h1>Quiz Game</h1>
 
-        {this.state.displayQuizGame ? <QuizGame /> : this.categoryGridsJsx()}
+        {this.state.displayQuizGame ? (
+          <QuizGame
+            category={this.state.category}
+            difficulty={this.state.difficulty}
+          />
+        ) : (
+          this.categoryGridsJsx()
+        )}
       </div>
     );
   }
