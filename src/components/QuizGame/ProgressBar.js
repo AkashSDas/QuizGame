@@ -12,7 +12,7 @@ const ProgressBar = (props) => {
   } else if (completed > 50 && completed <= 70) {
     bgcolor = "#ffa500";
   } else if (completed > 70 && completed <= 90) {
-    bgcolor = "#98fb98";
+    bgcolor = "#0be586";
   } else {
     bgcolor = "#00ff00";
   }

@@ -2,10 +2,12 @@ import React from "react";
 import shortid from "shortid";
 import Loader from "react-loader-spinner";
 
-import shuffle from "../utils/shuffle";
-
-import QuizGameBoard from "./QuizGameBoard";
 import ScoreBoard from "./ScoreBoard";
+import ProgressBar from "./ProgressBar";
+import Subtitle from "../Global/Subtitle";
+import QuizGameBoard from "./QuizGameBoard";
+
+import shuffle from "../../utils/shuffle";
 
 function getCategoryNum(category) {
   if (category === "gk") {
@@ -147,18 +149,26 @@ export default class QuizGame extends React.Component {
   render() {
     if (this.state.isLoading) {
       return (
-        <div
-          style={{
-            marginTop: "10rem",
-          }}
-        >
-          <Loader type="TailSpin" color="#FF5733" height={90} width={90} />
+        <div>
+          <ProgressBar completed={this.state.questionsSolved * 10} />
+
+          <div
+            style={{
+              marginTop: "10rem",
+            }}
+          >
+            <Subtitle text={"🐱‍🏍 Getting questions..."} />
+            <br />
+            <Loader type="TailSpin" color="#7d4bc3" height={90} width={90} />
+          </div>
         </div>
       );
     }
 
     return (
       <div>
+        <ProgressBar completed={this.state.questionsSolved * 10} />
+
         {this.state.questionsSolved < 10 ? (
           <QuizGameBoard
             questionsSolved={this.state.questionsSolved}

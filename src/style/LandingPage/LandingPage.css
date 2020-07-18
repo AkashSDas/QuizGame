@@ -1,7 +1,30 @@
+@import url("../Global/base.css");
 @import url("./Popup.css");
 
 .category-grid {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* Small screens */
+@media only screen and (max-width: 600px) {
+  .headline {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+/* Very small screens */
+@media only screen and (max-width: 300px) {
+  .headline {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
 }

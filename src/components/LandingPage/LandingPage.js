@@ -2,9 +2,9 @@ import React from "react";
 
 import Card from "./Card";
 import Popup from "./Popup";
-import QuizGame from "../QuizGame";
 import Headline from "../Global/Headline";
 import Subtitle from "../Global/Subtitle";
+import QuizGame from "../QuizGame/QuizGame";
 
 import "../../style/LandingPage/LandingPage.css";
 
@@ -47,8 +47,12 @@ export default class LandingPage extends React.Component {
     return (
       <div>
         <Subtitle
-          text={"Choose quiz questions category from a variety of categories"}
+          text={
+            "Choose quiz questions category from a 🔥 variety of categories"
+          }
         />
+
+        <hr />
 
         {this.state.showPopup ? (
           <Popup
@@ -131,7 +135,9 @@ export default class LandingPage extends React.Component {
   render() {
     return (
       <div>
-        <Headline text={"🤑 Quiz Game 🤑"} />
+        {this.state.displayQuizGame ? null : (
+          <Headline text={"🤑 Quiz Game 🤑"} />
+        )}
 
         {this.state.displayQuizGame ? (
           <QuizGame

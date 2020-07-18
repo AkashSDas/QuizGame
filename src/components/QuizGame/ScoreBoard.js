@@ -1,12 +1,11 @@
 import React from "react";
 
-import ProgressBar from "./ProgressBar";
-
-import "../style/ScoreBoard.css";
-import "../style/QuizGameBoard.css";
+import "../../style/QuizGame/ScoreBoard.css";
+import "../../style/QuizGame/QuizGameBoard.css";
 
 function getEmoji(props) {
   let emoji = null;
+
   if (props.questionCorrectlySolved === 0) {
     emoji = "🤢🤮";
   } else if (props.questionCorrectlySolved === 1) {
@@ -38,15 +37,14 @@ export default (props) => {
 
   return (
     <div>
-      <ProgressBar completed={props.questionsSolved * 10} />
       <div className={"score"}>
         Score: {emoji} {props.questionCorrectlySolved}/{props.questionsSolved}
       </div>
-      <div>
+
+      <div className={"quizGameBtnGrp"}>
         <button className={"submitBtn"} onClick={props.refresh}>
           👍 Play Again
         </button>
-
         <button className={"submitBtn"} onClick={props.goBackToMainMenu}>
           🚁 Main Menu
         </button>

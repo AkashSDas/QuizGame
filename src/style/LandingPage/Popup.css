@@ -1,3 +1,5 @@
+@import url("../Global/base.css");
+
 .popup {
   position: fixed;
   width: 100%;
@@ -10,6 +12,7 @@
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .popup_inner {
   position: absolute;
   left: 25%;
@@ -17,5 +20,76 @@
   top: 25%;
   bottom: 25%;
   margin: auto;
-  background: white;
+  background: var(--card-bg);
+  border-radius: 1rem;
+}
+
+.btnGrp {
+  display: flex;
+  justify-content: space-around;
+}
+
+.difficultyBtn {
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+  background: transparent;
+  border: 4px solid var(--purple-dark);
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--gray1);
+  transition: all 500ms;
+}
+
+.difficultyBtn:hover {
+  background: var(--purple-dark);
+}
+
+.closeBtn {
+  padding: 0.5rem 0.5rem;
+  background: transparent;
+  border: 4px solid var(--red-dark);
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.closeBtn:hover {
+  transition: all 500sms;
+  animation: rotate 3s infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(25deg);
+  }
+}
+
+/* Small screens */
+@media only screen and (max-width: 800px) {
+  .popup_inner {
+    left: 5%;
+    right: 5%;
+    top: 10%;
+    bottom: 5%;
+    padding-top: 1rem;
+  }
+
+  .btnGrp {
+    flex-direction: column;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+  }
+
+  .difficultyBtn {
+    font-size: 1.5rem;
+  }
+
+  .difficultyBtn {
+    padding: 1rem 1rem;
+  }
 }

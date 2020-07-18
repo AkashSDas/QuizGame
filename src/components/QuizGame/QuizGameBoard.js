@@ -1,14 +1,10 @@
 import React from "react";
 
-import ProgressBar from "./ProgressBar";
-
-import "../style/QuizGameBoard.css";
+import "../../style/QuizGame/QuizGameBoard.css";
 
 export default (props) => {
   return (
     <div>
-      <ProgressBar completed={props.questionsSolved * 10} />
-
       <div className={"gameboard"}>
         <div className={"question"}>📢Question: {props.quizQuestion}</div>
         <div className={"answersContainer"}>
@@ -27,11 +23,11 @@ export default (props) => {
             </div>
           ))}
         </div>
-        <div>
+
+        <div className={"quizGameBtnGrp"}>
           <button className={"submitBtn"} onClick={props.refresh}>
             🚀 Submit
           </button>
-
           <button className={"submitBtn"} onClick={props.goBackToMainMenu}>
             🚁 Main Menu
           </button>

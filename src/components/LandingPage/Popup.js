@@ -5,21 +5,37 @@ import "../../style/LandingPage/Popup.css";
 export default class Popup extends React.Component {
   render() {
     return (
-      <div className="popup">
-        <div className="popup_inner">
+      <div className={"popup"}>
+        <div className={"popup_inner"}>
           <div>
-            <h1>Difficulty</h1>
-            <button onClick={() => this.props.showQuizGame("easy")}>
-              Easy
-            </button>
-            <button onClick={() => this.props.showQuizGame("medium")}>
-              Medium
-            </button>
-            <button onClick={() => this.props.showQuizGame("hard")}>
-              Hard
-            </button>
+            <h1>💪 Difficulty</h1>
+            <div className={"btnGrp"}>
+              <button
+                className={"difficultyBtn"}
+                onClick={() => this.props.showQuizGame("easy")}
+              >
+                🤓Easy
+              </button>
+              <button
+                className={"difficultyBtn"}
+                onClick={() => this.props.showQuizGame("medium")}
+              >
+                🧐Medium
+              </button>
+              <button
+                className={"difficultyBtn"}
+                onClick={() => this.props.showQuizGame("hard")}
+              >
+                😎Hard
+              </button>
+            </div>
           </div>
-          <button onClick={() => this.props.closePopup("")}>close me</button>
+          <button
+            className={"closeBtn"}
+            onClick={() => this.props.closePopup("")}
+          >
+            ❌
+          </button>
         </div>
       </div>
     );
