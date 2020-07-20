@@ -65,67 +65,67 @@ export default class LandingPage extends React.Component {
           <Card
             togglePopup={this.togglePopup}
             category={"gk"}
-            text={"General Knowledge"}
+            text={"📚 General Knowledge"}
           />
           <Card
             togglePopup={this.togglePopup}
             category={"sci&nat"}
-            text={"Science & Nature"}
+            text={"🧪 Science & Nature"}
           />
           <Card
             togglePopup={this.togglePopup}
             category={"comp"}
-            text={"Computers"}
+            text={"💻 Computers"}
           />
           <Card
             togglePopup={this.togglePopup}
             category={"math"}
-            text={"Mathematics"}
+            text={"📐 Mathematics"}
           />
           <Card
             togglePopup={this.togglePopup}
             category={"politics"}
-            text={"Politics"}
+            text={"👨‍⚖️ Politics"}
           />
           <Card
             togglePopup={this.togglePopup}
             category={"sports"}
-            text={"Sports"}
+            text={"⚽ Sports"}
           />
           <Card
             togglePopup={this.togglePopup}
             category={"geo"}
-            text={"Geography"}
+            text={"🌎 Geography"}
           />
           <Card
             togglePopup={this.togglePopup}
             category={"hist"}
-            text={"History"}
+            text={"👴 History"}
           />
           <Card
             togglePopup={this.togglePopup}
             category={"animals"}
-            text={"Animals"}
+            text={"🐶 Animals"}
           />
           <Card
             togglePopup={this.togglePopup}
             category={"vehicles"}
-            text={"Vehicles"}
+            text={"🚗 Vehicles"}
           />
           <Card
             togglePopup={this.togglePopup}
             category={"comics"}
-            text={"Comics"}
+            text={"🦸‍♂️ Comics"}
           />
           <Card
             togglePopup={this.togglePopup}
             category={"ani&manga"}
-            text={"Japanese Anime & Manga"}
+            text={"🐱‍👤 Japanese Anime & Manga"}
           />
           <Card
             togglePopup={this.togglePopup}
             category={"cartoon&anim"}
-            text={"Cartoon & Animations"}
+            text={"👻 Cartoon & Animations"}
           />
         </div>
       </div>
