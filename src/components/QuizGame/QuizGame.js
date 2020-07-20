@@ -119,12 +119,12 @@ export default class QuizGame extends React.Component {
         canClickOnAnswer: true,
       });
     } else {
-      this.setState({
+      this.setState((state) => ({
         isLoading: true,
-        questionsSolved: this.state.questionsSolved + 1,
+        questionsSolved: state.questionsSolved + 1,
         borderColorOnClick: "#9932cc",
         canClickOnAnswer: true,
-      });
+      }));
     }
     this.getQuizGame();
   };
@@ -132,11 +132,11 @@ export default class QuizGame extends React.Component {
   checkAnswer = (answer) => {
     if (this.state.canClickOnAnswer) {
       if (this.state.correctAnswer === answer) {
-        this.setState({
-          questionCorrectlySolved: this.state.questionCorrectlySolved + 1,
+        this.setState((state) => ({
+          questionCorrectlySolved: state.questionCorrectlySolved + 1,
           borderColorOnClick: "#00ff00",
           canClickOnAnswer: false,
-        });
+        }));
       } else {
         this.setState({
           borderColorOnClick: "#ff3333",

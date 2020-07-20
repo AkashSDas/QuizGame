@@ -18,10 +18,10 @@ export default class LandingPage extends React.Component {
 
   // Choose difficulty
   togglePopup = (category) => {
-    this.setState({
+    this.setState((state) => ({
       category: category,
-      showPopup: !this.state.showPopup,
-    });
+      showPopup: !state.showPopup,
+    }));
   };
 
   // Show quiz game once the category & difficulty is selected
