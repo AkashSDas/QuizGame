@@ -64,7 +64,7 @@ export function getCategoryNum(category: string): number {
 
 type answerArrType = string[] | { id: string; answer: string }[];
 
-interface QAndA {
+export interface QAndA {
   quizQuestion: string;
   // answersArr: Answer[];
   answersArr: answerArrType;
