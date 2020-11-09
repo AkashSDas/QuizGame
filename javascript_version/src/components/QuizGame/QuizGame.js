@@ -1,13 +1,11 @@
 import React from "react";
-import shortid from "shortid";
 import Loader from "react-loader-spinner";
-
-import ScoreBoard from "./ScoreBoard";
-import ProgressBar from "./ProgressBar";
-import Subtitle from "../Global/Subtitle";
-import QuizGameBoard from "./QuizGameBoard";
-
+import shortid from "shortid";
 import shuffle from "../../utils/shuffle";
+import Subtitle from "../Global/Subtitle";
+import ProgressBar from "./ProgressBar";
+import QuizGameBoard from "./QuizGameBoard";
+import ScoreBoard from "./ScoreBoard";
 
 function getCategoryNum(category) {
   if (category === "gk") {
