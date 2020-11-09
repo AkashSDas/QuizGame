@@ -32,7 +32,7 @@ const QuizGame: React.FC<Props> = ({
   goBackToMainMenu,
 }: Props) => {
   const [state, setState] = React.useState<State>({
-    isLoading: false,
+    isLoading: true,
     quizQuestion: "",
     quizAnswers: [],
     correctAnswer: "",
@@ -57,7 +57,7 @@ const QuizGame: React.FC<Props> = ({
 
   // getting quiz Q and A's as component mounts
   React.useEffect(() => {
-    getQuizGame();
+    getQuizGame().then(() => setState({ ...state, isLoading: false }));
   }, []);
 
   const refresh = (): void => {
@@ -112,7 +112,7 @@ const QuizGame: React.FC<Props> = ({
 
           <div style={{ marginTop: "10rem" }}>
             <Subtitle text={"🐱‍🏍 Getting questions..."} />
-            <hr />
+            <br />
             <Loader type="TailSpin" color="#7d4bc3" height={90} width={90} />
           </div>
         </div>
