@@ -6,7 +6,7 @@ interface Props {
   quizQuestion: string;
   // make sure to pass quizAnswers of type below rather than
   // of type string[] | { id: string; answer: string }[]
-  quizAnswers: { id: string; answer: string }[];
+  quizAnswers: string[] | { id: string; answer: string }[];
   borderColorOnClick: string;
   goBackToMainMenu: () => void;
   refresh: () => void;
@@ -19,22 +19,24 @@ const QuizGameBoard: React.FC<Props> = (props: Props) => {
       <div className="gameboard">
         <div className="question">📢 Question: {props.quizQuestion}</div>
         <div className="answersContainer">
-          {props.quizAnswers.map((answer: { id: string; answer: string }) => (
-            <div
-              onClick={() => {
-                props.checkAnswer(answer.answer);
-              }}
-              style={{
-                borderColor: props.borderColorOnClick
-                  ? props.borderColorOnClick
-                  : "#9932cc",
-              }}
-              className="answers"
-              key={answer.id}
-            >
-              {answer.answer}
-            </div>
-          ))}
+          {(props.quizAnswers as { id: string; answer: string }[]).map(
+            (answer: { id: string; answer: string }) => (
+              <div
+                onClick={() => {
+                  props.checkAnswer(answer.answer);
+                }}
+                style={{
+                  borderColor: props.borderColorOnClick
+                    ? props.borderColorOnClick
+                    : "#9932cc",
+                }}
+                className="answers"
+                key={answer.id}
+              >
+                {answer.answer}
+              </div>
+            )
+          )}
         </div>
 
         <div className="quizGameBtnGrp">
