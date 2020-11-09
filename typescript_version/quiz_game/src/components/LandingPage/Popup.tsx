@@ -5,6 +5,7 @@ interface Props {
   text: string;
   showPopup: (difficulty: string) => void;
   closePopup: (category: string) => void;
+  showQuizGame: (category: string) => void;
 }
 
 const Popup: React.FC<Props> = (props: Props) => {
@@ -14,13 +15,22 @@ const Popup: React.FC<Props> = (props: Props) => {
         <div>
           <h1>💪 Difficulty</h1>
           <div className="btnGrp">
-            <button className="diffcultyBtn" onClick={() => {}}>
+            <button
+              className="difficultyBtn"
+              onClick={() => props.showQuizGame("easy")}
+            >
               🤓 Easy
             </button>
-            <button className={"difficultyBtn"} onClick={() => {}}>
+            <button
+              className="difficultyBtn"
+              onClick={() => props.showQuizGame("medium")}
+            >
               🧐 Medium
             </button>
-            <button className={"difficultyBtn"} onClick={() => {}}>
+            <button
+              className="difficultyBtn"
+              onClick={() => props.showQuizGame("hard")}
+            >
               😎 Hard
             </button>
           </div>

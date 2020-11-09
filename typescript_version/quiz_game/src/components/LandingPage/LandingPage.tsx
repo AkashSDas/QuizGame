@@ -2,6 +2,7 @@ import React, { ReactElement, useState } from "react";
 import "../../style/LandingPage/LandingPage.css";
 import Headline from "../Global/Headline";
 import Subtitle from "../Global/Subtitle";
+import QuizGame from "../QuizGame/QuizGame";
 import Card from "./Card";
 import Popup from "./Popup";
 
@@ -53,6 +54,7 @@ const LandingPage: React.FC = () => {
             text={"popup"}
             showPopup={showQuizGame}
             closePopup={togglePopup}
+            showQuizGame={showQuizGame}
           />
         ) : null}
         <div className="category-grid">
@@ -126,20 +128,22 @@ const LandingPage: React.FC = () => {
     );
   };
 
-  return <div>
-      {state.displayQuizGame ? null : (
-          <Headline text={"🤑 Quiz Game 🤑"} />
-      )}
+  return (
+    <div>
+      {state.displayQuizGame ? null : <Headline text={"🤑 Quiz Game 🤑"} />}
 
-      {state.displayQuizGame > (
-          (
-            <QuizGame
-            category={state.category}
-            difficulty={state.difficulty}
-            displayQuizGame={state.displayQuizGame}
-            goBackToMainMenu={goBackToMainMenu}
-          />
-          )
-      ) : (categoryGridsJsx)}
-  </div>
+      {state.displayQuizGame ? (
+        <QuizGame
+          category={state.category as string}
+          difficulty={state.difficulty as string}
+          displayQuizGame={state.displayQuizGame}
+          goBackToMainMenu={goBackToMainMenu}
+        />
+      ) : (
+        categoryGridsJsx()
+      )}
+    </div>
+  );
 };
+
+export default LandingPage;

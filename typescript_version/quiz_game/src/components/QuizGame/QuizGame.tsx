@@ -10,6 +10,7 @@ interface Props {
   category: string;
   difficulty: string;
   goBackToMainMenu: () => void;
+  displayQuizGame: boolean;
 }
 
 interface State {

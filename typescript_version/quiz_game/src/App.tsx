@@ -1,4 +1,5 @@
 import React from "react";
+import LandingPage from "./components/LandingPage/LandingPage";
 import "./style/App.css";
 import "./style/Global/base.css";
 
