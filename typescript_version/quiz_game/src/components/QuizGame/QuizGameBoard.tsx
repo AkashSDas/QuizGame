@@ -22,9 +22,7 @@ const QuizGameBoard: React.FC<Props> = (props: Props) => {
           {(props.quizAnswers as { id: string; answer: string }[]).map(
             (answer: { id: string; answer: string }) => (
               <div
-                onClick={() => {
-                  props.checkAnswer(answer.answer);
-                }}
+                onClick={() => props.checkAnswer(answer.answer)}
                 style={{
                   borderColor: props.borderColorOnClick
                     ? props.borderColorOnClick

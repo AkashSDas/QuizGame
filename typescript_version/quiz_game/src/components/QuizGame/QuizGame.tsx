@@ -44,62 +44,64 @@ const QuizGame: React.FC<Props> = ({
     difficulty: difficulty,
   });
 
-  async function getQuizGame(): Promise<void> {
+  const getQuizGame = React.useCallback(async () => {
     const results = await getQAndA(state.category, state.difficulty);
-    setState({
-      ...state,
+    setState((currentState: State) => ({
+      ...currentState,
       isLoading: false,
       quizQuestion: results.quizQuestion,
       quizAnswers: results.answersArr,
       correctAnswer: results.correctAnswer,
-    });
-  }
+    }));
+  }, [state.category, state.difficulty]);
 
   // getting quiz Q and A's as component mounts
   React.useEffect(() => {
-    getQuizGame().then(() => setState({ ...state, isLoading: false }));
-  }, []);
+    (async () => {
+      getQuizGame();
+    })();
+  }, [getQuizGame]);
 
   const refresh = (): void => {
     if (state.questionsSolved >= 10) {
       // one round of quiz will contain 10 questions
       // after resetting all states to its initial values
-      setState({
-        ...state,
+      setState((currentState: State) => ({
+        ...currentState,
         isLoading: true,
         questionsSolved: 0,
         borderColorOnClick: "#9932cc",
         canClickOnAnswer: true,
-      });
+      }));
     } else {
-      setState({
-        ...state,
+      setState((currentState: State) => ({
+        ...currentState,
         isLoading: true,
         questionsSolved: state.questionsSolved + 1,
         borderColorOnClick: "#9932cc",
         canClickOnAnswer: true,
-      });
-
-      // getting new Q and A's
-      getQuizGame();
+      }));
     }
+
+    // getting new Q and A's
+    getQuizGame();
   };
 
-  const chekcAnswer = (answer: string): void => {
+  const checkAnswer = (answer: string): void => {
     if (state.canClickOnAnswer) {
       if (state.correctAnswer === answer) {
-        setState({
-          ...state,
+        setState((currentState: State) => ({
+          ...currentState,
           questionsCorrectlySolved: state.questionsCorrectlySolved + 1,
           borderColorOnClick: "#00ff00",
           canClickOnAnswer: false,
-        });
+        }));
       } else {
-        setState({
-          ...state,
+        setState((currentState: State) => ({
+          ...currentState,
           borderColorOnClick: "#ff3333",
           canClickOnAnswer: false,
-        });
+        }));
       }
     }
   };
@@ -126,7 +128,7 @@ const QuizGame: React.FC<Props> = ({
               quizQuestion={state.quizQuestion}
               quizAnswers={state.quizAnswers}
               refresh={refresh}
-              checkAnswer={chekcAnswer}
+              checkAnswer={checkAnswer}
               borderColorOnClick={state.borderColorOnClick}
               goBackToMainMenu={goBackToMainMenu}
             />
