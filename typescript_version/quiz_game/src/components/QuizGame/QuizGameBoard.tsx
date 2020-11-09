@@ -1,17 +1,29 @@
 import React from "react";
 import "../../style/QuizGame/QuizGameBoard.css";
 
-interface Props {}
+interface Props {
+  questionsSolved: number;
+  quizQuestion: string;
+  // make sure to pass quizAnswers of type below rather than
+  // of type string[] | { id: string; answer: string }[]
+  quizAnswers: { id: string; answer: string }[];
+  borderColorOnClick: string;
+  goBackToMainMenu: () => void;
+  refresh: () => void;
+  checkAnswer: (answer: string) => void;
+}
 
-export default (props: Props) => {
+const QuizGameBoard: React.FC<Props> = (props: Props) => {
   return (
     <div>
       <div className="gameboard">
         <div className="question">📢 Question: {props.quizQuestion}</div>
         <div className="answersContainer">
-          {props.quizAnswers.map((answer) => (
+          {props.quizAnswers.map((answer: { id: string; answer: string }) => (
             <div
-              onClick={() => props.checkAnswer(answer.answer)}
+              onClick={() => {
+                props.checkAnswer(answer.answer);
+              }}
               style={{
                 borderColor: props.borderColorOnClick
                   ? props.borderColorOnClick
@@ -37,3 +49,5 @@ export default (props: Props) => {
     </div>
   );
 };
+
+export default QuizGameBoard;
