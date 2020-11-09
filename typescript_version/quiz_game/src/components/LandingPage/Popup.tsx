@@ -1,7 +1,13 @@
 import React from "react";
 import "../../style/LandingPage/Popup.css";
 
-const Popup: React.FC = (props) => {
+interface Props {
+  text: string;
+  showPopup: (difficulty: string) => void;
+  closePopup: (category: string) => void;
+}
+
+const Popup: React.FC<Props> = (props: Props) => {
   return (
     <div className="popup">
       <div className="popup_inner">
