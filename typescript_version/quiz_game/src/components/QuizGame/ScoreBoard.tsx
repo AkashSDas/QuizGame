@@ -2,9 +2,7 @@ import React from "react";
 import "../../style/QuizGame/QuizGameBoard.css";
 import "../../style/QuizGame/ScoreBoard.css";
 
-type numOfCorrectQuestions = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-
-const getEmoji = (questionCorrectlySolved: numOfCorrectQuestions): string => {
+const getEmoji = (questionCorrectlySolved: number): string => {
   let emoji = "🐵";
 
   if (questionCorrectlySolved === 0) {
@@ -34,7 +32,7 @@ const getEmoji = (questionCorrectlySolved: numOfCorrectQuestions): string => {
 };
 
 interface Props {
-  questionCorrectlySolved: numOfCorrectQuestions;
+  questionCorrectlySolved: number;
   questionsSolved: number;
   refresh: () => void;
   goBackToMainMenu: () => void;
